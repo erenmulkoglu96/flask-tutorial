@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block title %} Actors Page {%endblock title%}
+
+{% block content %}
+
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Img</th>
+        <th scope="col">Name</th>
+        <th scope="col">Likes</th>
+        <th scope="col">Dislikes</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for actor in actors %}
+        <tr>
+            <td>
+                <img src="static/images/actors/{{ actor['image'] }}">
+            </td>
+            <td><a href=" {{ url_for('actor_detail_page', id= actor['id'] ) }}"> {{ actor['name'] }} </a></td>
+            <td>{{ actor['likes'] }}</td>
+            <td>{{ actor['dislikes'] }}</td>
+
+            <td>
+                <form method="post">
+                    <button type="submit" name="like"    value="{{ actor['id'] }}" class="btn btn-primary">Like</button>
+                    <button type="submit" name="dislike" value="{{ actor['id'] }}" class="btn btn-dark">Dislike</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock content %}
