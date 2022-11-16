@@ -10,7 +10,7 @@ extensions.register_type(extensions.UNICODEARRAY)
 
 app = Flask(__name__)
 
-HEROKU = False
+HEROKU = True
 
 if(not HEROKU): 
     os.environ['DATABASE_URL'] = "dbname='postgres' user='postgres' host='localhost' password='eren157123'"
